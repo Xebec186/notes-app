@@ -3,7 +3,7 @@ package com.xebec.notes_app.model;
 import jakarta.persistence.*;
 import lombok.*;
 
-import java.sql.Date;
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "notes")
@@ -19,7 +19,7 @@ public class Note {
 
     private String title;
     private String content;
-    private Date createdAt;
+    private LocalDateTime createdAt;
 
     @ManyToOne
     @JoinColumn(name = "user_id", nullable = false)

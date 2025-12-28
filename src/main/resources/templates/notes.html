@@ -3,8 +3,68 @@
 <head>
     <meta charset="UTF-8">
     <title>Notes App</title>
+    <link rel="stylesheet" th:href="@{/css/notes.css}" href="../static/css/notes.css">
 </head>
 <body>
-    <h1 th:text="'Welcome ' + ${name}">Welcome User</h1>
+
+<!-- NAVBAR -->
+<header class="navbar">
+    <div class="navbar-left">
+        <h1>Notes App</h1>
+    </div>
+    <div class="navbar-right">
+        <span>Welcome, <strong th:text="${username}">glen</strong></span>
+        <a th:href="@{/logout}" class="logout-link">Logout</a>
+    </div>
+</header>
+
+<!-- MAIN CONTENT -->
+<main class="container">
+
+    <div class="page-header">
+        <div>
+            <h2>My Notes</h2>
+            <p th:text="${notes.size()} + ' notes'">3 notes</p>
+        </div>
+
+        <a th:href="@{/notes/new}" class="btn-primary">
+            + Add New Note
+        </a>
+    </div>
+
+    <!-- NOTES GRID -->
+    <div class="notes-grid">
+
+        <div class="note-card" th:each="note : ${notes}">
+            <h3 th:text="${note.title}">Note title</h3>
+
+            <p class="note-content"
+               th:text="${note.content}">
+                Note content preview
+            </p>
+
+            <hr>
+
+            <div class="note-footer">
+                <span th:text="${#temporals.format(note.createdAt, 'MMM dd, yyyy')}">
+                    Dec 20, 2024
+                </span>
+
+                <div class="actions">
+                    <a th:href="@{/notes/edit/{id}(id=${note.id})}" class="edit">
+                        Edit
+                    </a>
+                    <a th:href="@{/notes/delete/{id}(id=${note.id})}"
+                       class="delete"
+                       onclick="return confirm('Delete this note?');">
+                        Delete
+                    </a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</main>
+
 </body>
 </html>

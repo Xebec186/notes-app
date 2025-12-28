@@ -1,0 +1,166 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Open Sans", sans-serif;
+    background-color: #f8fafc;
+    color: #0f172a;
+}
+
+/* NAVBAR */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 40px;
+    background-color: #ffffff;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.navbar h1 {
+    font-size: 25px;
+}
+
+.navbar-right {
+    display: flex;
+    gap: 25px;
+    align-items: center;
+}
+
+.logout-link {
+    color: #2563eb;
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.3s ease-in-out;
+}
+
+.logout-link:hover {
+    cursor: pointer;
+    color: #1E40AF;
+}
+
+/* PAGE */
+.container {
+    padding: 40px;
+}
+
+/* HEADER */
+.page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 32px;
+}
+
+.page-header h2 {
+    font-size: 24px;
+    margin-bottom: 4px;
+}
+
+.page-header p {
+    color: #64748b;
+}
+
+/* BUTTON */
+.btn-primary {
+    background-color: #2563eb;
+    color: #ffffff;
+    padding: 12px 18px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.3s ease-in-out;
+}
+
+.btn-primary:hover {
+    cursor: pointer;
+    background-color: #1d4ed8;
+}
+
+/* NOTES GRID */
+.notes-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+    gap: 24px;
+}
+
+/* NOTE CARD */
+.note-card {
+    background-color: #ffffff;
+    width: 400px;
+    height: 200px;
+    padding: 25px;
+    border-radius: 12px;
+    border: 1px solid #e5e7eb;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-shadow: 2px 3px 5px rgba(0, 0, 0, 0.1);
+    transition: all 0.2s ease-in-out;
+}
+
+.note-card:hover {
+   box-shadow: 2px 3px 5px rgba(0, 0, 0, 0.2);
+}
+
+.note-card h3 {
+    font-size: 18px;
+    margin-bottom: 8px;
+}
+
+.note-content {
+    color: #475569;
+    line-height: 1.5;
+    margin-bottom: 16px;
+}
+
+/* FOOTER */
+.note-card hr {
+    border: none;
+    border-top: 1px solid #e5e7eb;
+    margin: 16px 0;
+}
+
+.note-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 14px;
+    color: #64748b;
+}
+
+.actions {
+    display: flex;
+    gap: 12px;
+}
+
+.actions .edit {
+    color: #2563eb;
+    padding: 8px 12px;
+    border-radius: 4px;
+    text-decoration: none;
+    transition: all 0.3s ease-in-out;
+}
+
+.actions .edit:hover {
+    cursor: pointer;
+    background-color: #EFF6FF;
+}
+
+.actions .delete {
+    color: #dc2626;
+    padding: 8px;
+    border-radius: 4px;
+    text-decoration: none;
+    transition: all 0.3s ease-in-out;
+}
+
+.actions .delete:hover {
+    cursor: pointer;
+    background-color: #FEF2F2;
+}
