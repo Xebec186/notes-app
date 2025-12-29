@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="${note.title} + ' | Notes App'">View Note</title>
+    <link rel="stylesheet" th:href="@{/css/notes.css}" href="../static/css/notes.css">
+</head>
+<body>
+
+<!-- NAVBAR -->
+<header class="navbar">
+    <div class="navbar-left">
+        <h1>Notes App</h1>
+    </div>
+
+    <div class="navbar-right">
+        <span>Welcome, <strong th:text="${username}">User</strong>!</span>
+        <a th:href="@{/logout}" class="logout-link">Logout</a>
+    </div>
+</header>
+
+<!-- PAGE CONTENT -->
+<main class="container">
+
+    <!-- BACK LINK -->
+    <a th:href="@{/notes}" class="back-link">
+        ← Back to Notes
+    </a>
+
+    <!-- NOTE CARD -->
+    <div class="single-note-card">
+
+        <!-- HEADER -->
+        <div class="single-note-header">
+            <h2 th:text="${note.title}">Meeting Notes</h2>
+
+            <div class="note-date">
+                📅
+                <span th:text="${#temporals.format(note.createdAt, 'MMMM dd, yyyy ''at'' hh:mm a')}">
+                    December 21, 2024 at 02:30 PM
+                </span>
+            </div>
+        </div>
+
+        <!-- CONTENT -->
+        <div class="single-note-content">
+            <p th:text="${note.content}">
+                Discuss project timeline and deliverables for Q1 2025.
+            </p>
+        </div>
+
+        <!-- ACTIONS -->
+        <div class="single-note-actions">
+            <a
+                    th:href="@{/notes/edit/{id}(id=${note.id})}"
+                    class="btn-edit"
+            >
+                ✏️ Edit Note
+            </a>
+
+            <a
+                    th:href="@{/notes/delete/{id}(id=${note.id})}"
+                    class="btn-delete"
+                    onclick="return confirm('Are you sure you want to delete this note?');"
+            >
+                🗑️ Delete Note
+            </a>
+        </div>
+
+    </div>
+
+</main>
+
+</body>
+</html>

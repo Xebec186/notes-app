@@ -36,32 +36,35 @@
     <div class="notes-grid">
 
         <div class="note-card" th:each="note : ${notes}">
-            <h3 th:text="${note.title}">Note title</h3>
+            <a th:href="@{/notes/{id}(id=${note.id})}" href="note.html" class="note-card-link">
+                <h3 th:text="${note.title}">Note title</h3>
 
-            <p class="note-content"
-               th:text="${note.content}">
-                Note content preview
-            </p>
+                <p class="note-content"
+                   th:text="${note.content}">
+                    Note content preview
+                </p>
 
-            <hr>
+                <hr>
 
-            <div class="note-footer">
-                <span th:text="${#temporals.format(note.createdAt, 'MMM dd, yyyy')}">
-                    Dec 20, 2024
-                </span>
+                <div class="note-footer">
+                    <span th:text="${#temporals.format(note.createdAt, 'MMM dd, yyyy')}">
+                        Dec 20, 2024
+                    </span>
 
-                <div class="actions">
-                    <a th:href="@{/notes/edit/{id}(id=${note.id})}" class="edit">
-                        Edit
-                    </a>
-                    <a th:href="@{/notes/delete/{id}(id=${note.id})}"
-                       class="delete"
-                       onclick="return confirm('Delete this note?');">
-                        Delete
-                    </a>
+                    <div class="actions">
+                        <a th:href="@{/notes/edit/{id}(id=${note.id})}" class="edit">
+                            Edit
+                        </a>
+                        <a th:href="@{/notes/delete/{id}(id=${note.id})}"
+                           class="delete"
+                           onclick="return confirm('Delete this note?');">
+                            Delete
+                        </a>
+                    </div>
                 </div>
-            </div>
+            </a>
         </div>
+
 
     </div>
 </main>

@@ -138,6 +138,14 @@ body {
     color: #64748b;
 }
 
+.note-footer span {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 14px;
+    color: #64748b;
+}
+
 .actions {
     display: flex;
     gap: 12px;
@@ -168,6 +176,12 @@ body {
     cursor: pointer;
     background-color: #FEF2F2;
 }
+
+.note-card-link, .note-card-link:hover, .note-card-link:active, .note-card-link:visited {
+    text-decoration: none;
+    color: #000;
+}
+
 
 /* ======== ADD-NOTES PAGE ======== */
 /* BACK LINK */
@@ -245,5 +259,102 @@ body {
 
 .btn-secondary:hover {
     background-color: #cbd5e1;
+    cursor: pointer;
+}
+
+/* ======== VIEW-NOTE PAGE ======== */
+/* BACK LINK */
+.back-link {
+    display: inline-block;
+    margin-bottom: 24px;
+    color: #2563eb;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.back-link:hover {
+    cursor: pointer;
+}
+
+/* SINGLE NOTE CARD */
+.single-note-card {
+    max-width: 900px;
+    margin: 0 auto;
+    background-color: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 14px;
+    box-shadow: 2px 3px 6px rgba(0, 0, 0, 0.08);
+}
+
+/* HEADER */
+.single-note-header {
+    padding: 28px 32px;
+    background-color: #F4F8FD;
+    border-top-left-radius: 14px;
+    border-top-right-radius: 14px;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.single-note-header h2 {
+    font-size: 26px;
+    margin-bottom: 8px;
+}
+
+.note-date {
+    color: #64748b;
+    font-size: 15px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* CONTENT */
+.single-note-content {
+    padding: 60px 32px;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 1.7;
+    color: #334155;
+}
+
+/* ACTIONS */
+.single-note-actions {
+    padding: 24px 32px;
+    display: flex;
+    justify-content: flex-end;
+    gap: 16px;
+    background-color: #f8fafc;
+    border-top: 1px solid #e5e7eb;
+    border-bottom-left-radius: 14px;
+    border-bottom-right-radius: 14px;
+}
+
+/* EDIT BUTTON */
+.btn-edit {
+    background-color: #2563eb;
+    color: #ffffff;
+    padding: 12px 20px;
+    border-radius: 10px;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.btn-edit:hover {
+    background-color: #1e40af;
+    cursor: pointer;
+}
+
+/* DELETE BUTTON */
+.btn-delete {
+    background-color: #dc2626;
+    color: #ffffff;
+    padding: 12px 20px;
+    border-radius: 10px;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.btn-delete:hover {
+    background-color: #b91c1c;
     cursor: pointer;
 }
