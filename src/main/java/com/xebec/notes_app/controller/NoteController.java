@@ -3,6 +3,7 @@ package com.xebec.notes_app.controller;
 import com.xebec.notes_app.dto.NoteDto;
 import com.xebec.notes_app.service.NoteService;
 import lombok.AllArgsConstructor;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -19,8 +20,8 @@ public class NoteController {
     private NoteService noteService;
 
     @ModelAttribute("username")
-    public String username() {
-        return "Glenn";
+    public String username(@AuthenticationPrincipal(expression = "username") String username) {
+        return username;
     }
 
     @GetMapping("/notes")
