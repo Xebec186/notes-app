@@ -13,7 +13,7 @@
         <h1>Notes App</h1>
     </div>
     <div class="navbar-right">
-        <span>Welcome, <strong th:text="${username}">glen</strong></span>
+        <span>Welcome, <strong th:text="${username}">user</strong></span>
         <a th:href="@{/logout}" class="logout-link">Logout</a>
     </div>
 </header>
@@ -27,7 +27,7 @@
             <p th:text="${notes.size()} + ' notes'">3 notes</p>
         </div>
 
-        <a th:href="@{/notes/new}" class="btn-primary">
+        <a th:href="@{/add-note}" href="add-note.html" class="btn-primary">
             + Add New Note
         </a>
     </div>

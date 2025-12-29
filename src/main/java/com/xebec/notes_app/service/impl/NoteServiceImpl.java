@@ -21,8 +21,13 @@ public class NoteServiceImpl implements NoteService {
     private UserRepository userRepository;
     private ModelMapper modelMapper;
 
-    public NoteDto addNote(NoteDto noteDto) {
+    public NoteDto addNote(NoteDto noteDto, Long userId) {
+        User user = userRepository.findById(userId)
+                .orElseThrow(() -> new ResourceNotFoundException("User does not exist with id: " + userId));
+
         Note note = modelMapper.map(noteDto, Note.class);
+        note.setUser(user);
+
         Note addedNote = noteRepository.save(note);
         return modelMapper.map(addedNote, NoteDto.class);
     }

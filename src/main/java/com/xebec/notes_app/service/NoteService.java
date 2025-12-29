@@ -5,7 +5,7 @@ import com.xebec.notes_app.dto.NoteDto;
 import java.util.List;
 
 public interface NoteService {
-    public NoteDto addNote(NoteDto note);
+    public NoteDto addNote(NoteDto note, Long userId);
 
     public NoteDto getNoteById(Long id);
 

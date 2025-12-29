@@ -16,5 +16,4 @@ public class NotesAppApplication {
 	public ModelMapper modelMapper() {
 		return new ModelMapper();
 	}
-
 }
