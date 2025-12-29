@@ -50,17 +50,6 @@
                     <span th:text="${#temporals.format(note.createdAt, 'MMM dd, yyyy')}">
                         Dec 20, 2024
                     </span>
-
-                    <div class="actions">
-                        <a th:href="@{/note/edit/{id}(id=${note.id})}" class="edit">
-                            Edit
-                        </a>
-                        <a th:href="@{/notes/delete/{id}(id=${note.id})}"
-                           class="delete"
-                           onclick="return confirm('Delete this note?');">
-                            Delete
-                        </a>
-                    </div>
                 </div>
             </a>
         </div>

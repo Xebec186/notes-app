@@ -58,13 +58,15 @@
                 ✏️ Edit Note
             </a>
 
-            <a
-                    th:href="@{/notes/delete/{id}(id=${note.id})}"
-                    class="btn-delete"
-                    onclick="return confirm('Are you sure you want to delete this note?');"
-            >
-                🗑️ Delete Note
-            </a>
+            <form th:action="@{/notes/delete/{id}(id=${note.id})}" method="post">
+                <button
+                        type="submit"
+                        class="btn-delete"
+                        onclick="return confirm('Are you sure you want to delete this note?');"
+                >
+                    🗑️ Delete Note
+                </button>
+            </form>
         </div>
 
     </div>
