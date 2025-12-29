@@ -1,62 +1,46 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Notes App</title>
+    <link rel="stylesheet" th:href="@{/css/base.css}" href="../static/css/base.css">
     <link rel="stylesheet" th:href="@{/css/notes.css}" href="../static/css/notes.css">
 </head>
-<body>
+    <body>
+        <th:block th:replace="~{fragments/navbar :: navbar(${username})}"/>
 
-<!-- NAVBAR -->
-<header class="navbar">
-    <div class="navbar-left">
-        <h1>Notes App</h1>
-    </div>
-    <div class="navbar-right">
-        <span>Welcome, <strong th:text="${username}">user</strong></span>
-        <a th:href="@{/logout}" class="logout-link">Logout</a>
-    </div>
-</header>
-
-<!-- MAIN CONTENT -->
-<main class="container">
-
-    <div class="page-header">
-        <div>
-            <h2>My Notes</h2>
-            <p th:text="${notes.size()} + ' notes'">3 notes</p>
-        </div>
-
-        <a th:href="@{/notes/add}" href="add-note.html" class="btn-primary">
-            + Add New Note
-        </a>
-    </div>
-
-    <!-- NOTES GRID -->
-    <div class="notes-grid">
-
-        <div class="note-card" th:each="note : ${notes}">
-            <a th:href="@{/notes/{id}(id=${note.id})}" href="note.html" class="note-card-link">
-                <h3 th:text="${note.title}">Note title</h3>
-
-                <p class="note-content"
-                   th:text="${note.content}">
-                    Note content preview
-                </p>
-
-                <hr>
-
-                <div class="note-footer">
-                    <span th:text="${#temporals.format(note.createdAt, 'MMM dd, yyyy')}">
-                        Dec 20, 2024
-                    </span>
+        <main class="container">
+            <div class="page-header">
+                <div>
+                    <h2>My Notes</h2>
+                    <p th:text="${notes.size()} + ' notes'">3 notes</p>
                 </div>
-            </a>
-        </div>
 
+                <a th:href="@{/notes/add}" href="add-note.html" class="btn-primary">
+                    + Add New Note
+                </a>
+            </div>
 
-    </div>
-</main>
+            <!-- NOTES GRID -->
+            <div class="notes-grid">
+                <div class="note-card" th:each="note : ${notes}">
+                    <a th:href="@{/notes/{id}(id=${note.id})}" href="note.html" class="note-card-link">
+                            <h3 th:text="${note.title}">Note title</h3>
+                        <p class="note-content"
+                           th:text="${note.content}">
+                            Note content preview
+                        </p>
 
-</body>
+                        <hr>
+
+                        <div class="note-footer">
+                        <span th:text="${#temporals.format(note.createdAt, 'MMM dd, yyyy')}">
+                            Dec 20, 2024
+                        </span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </main>
+    </body>
 </html>

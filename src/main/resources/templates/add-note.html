@@ -1,69 +1,67 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
+
 <head>
     <meta charset="UTF-8">
     <title>New Note | Notes App</title>
-    <link rel="stylesheet" th:href="@{/css/notes.css}" href="../static/css/notes.css">
+    <link rel="stylesheet" th:href="@{/css/base.css}" href="../static/css/base.css">
+    <link rel="stylesheet" th:href="@{/css/note-form.css}" href="../static/css/note-form.css">
 </head>
 <body>
+    <!-- NAVBAR -->
+    <th:block th:replace="~{fragments/navbar :: navbar(${username})}"/>
 
-<!-- NAVBAR -->
-<header class="navbar">
-    <div class="navbar-left">
-        <h1>Notes App</h1>
-    </div>
-    <div class="navbar-right">
-        <a th:href="@{/notes}" href="notes.html" class="back-link">← Back to Notes</a>
-    </div>
-</header>
+    <!-- MAIN CONTENT -->
+    <main class="container">
 
-<!-- MAIN CONTENT -->
-<main class="container">
+        <!-- BACK LINK -->
+        <a th:href="@{/notes}" href="notes.html" class="back-link">
+            ← Back to Notes
+        </a>
 
-    <div class="form-wrapper">
-        <h2 class="form-title">New Note</h2>
+        <div class="form-wrapper">
+            <h2 class="form-title">New Note</h2>
 
-        <form th:action="@{/notes/add}" th:object="${note}" method="post">
+            <form th:action="@{/notes/add}" th:object="${note}" method="post">
 
-            <!-- TITLE -->
-            <div class="form-group">
-                <label for="title">Title</label>
-                <input
-                        type="text"
-                        id="title"
-                        th:field="*{title}"
-                        placeholder="Enter note title"
-                        required
-                />
-            </div>
+                <!-- TITLE -->
+                <div class="form-group">
+                    <label for="title">Title</label>
+                    <input
+                            type="text"
+                            id="title"
+                            th:field="*{title}"
+                            placeholder="Enter note title"
+                            required
+                    />
+                </div>
 
-            <!-- CONTENT -->
-            <div class="form-group">
-                <label for="content">Content</label>
-                <textarea
-                        id="content"
-                        th:field="*{content}"
-                        placeholder="Write your note here..."
-                        rows="10"
-                        required
-                ></textarea>
-            </div>
+                <!-- CONTENT -->
+                <div class="form-group">
+                    <label for="content">Content</label>
+                    <textarea
+                            id="content"
+                            th:field="*{content}"
+                            placeholder="Write your note here..."
+                            rows="10"
+                            required
+                    ></textarea>
+                </div>
 
-            <!-- ACTIONS -->
-            <div class="form-actions">
-                <button type="submit" class="btn-primary">
-                    Save Note
-                </button>
+                <!-- ACTIONS -->
+                <div class="form-actions">
+                    <button type="submit" class="btn-primary">
+                        Save Note
+                    </button>
 
-                <a th:href="@{/notes}" class="btn-secondary">
-                    Cancel
-                </a>
-            </div>
+                    <a th:href="@{/notes}" href="notes.html" class="btn-secondary">
+                        Cancel
+                    </a>
+                </div>
 
-        </form>
-    </div>
+            </form>
+        </div>
 
-</main>
-
+    </main>
 </body>
 </html>

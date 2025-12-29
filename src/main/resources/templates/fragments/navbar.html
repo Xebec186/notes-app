@@ -1,0 +1,12 @@
+<header class="navbar" th:fragment="navbar(username)">
+  <div class="navbar-left">
+    <h1>
+      <a th:href="@{/notes}" href="../notes.html">Notes App</a>
+    </h1>
+  </div>
+
+  <div class="navbar-right">
+    <span>Welcome, <strong th:text="${username}">User</strong></span>
+    <a th:href="@{/logout}" class="logout-link">Logout</a>
+  </div>
+</header>

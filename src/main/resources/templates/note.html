@@ -3,27 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <title th:text="${note.title} + ' | Notes App'">View Note</title>
-    <link rel="stylesheet" th:href="@{/css/notes.css}" href="../static/css/notes.css">
+    <link rel="stylesheet" th:href="@{/css/base.css}" href="../static/css/base.css">
+    <link rel="stylesheet" th:href="@{/css/note.css}" href="../static/css/note.css">
 </head>
+
 <body>
 
 <!-- NAVBAR -->
-<header class="navbar">
-    <div class="navbar-left">
-        <h1>Notes App</h1>
-    </div>
-
-    <div class="navbar-right">
-        <span>Welcome, <strong th:text="${username}">User</strong>!</span>
-        <a th:href="@{/logout}" class="logout-link">Logout</a>
-    </div>
-</header>
+<th:block th:replace="~{fragments/navbar :: navbar(${username})}"/>
 
 <!-- PAGE CONTENT -->
 <main class="container">
 
     <!-- BACK LINK -->
-    <a th:href="@{/notes}" class="back-link">
+    <a th:href="@{/notes}" href="notes.html" class="back-link">
         ← Back to Notes
     </a>
 
@@ -35,7 +28,6 @@
             <h2 th:text="${note.title}">Meeting Notes</h2>
 
             <div class="note-date">
-                📅
                 <span th:text="${#temporals.format(note.createdAt, 'MMMM dd, yyyy ''at'' hh:mm a')}">
                     December 21, 2024 at 02:30 PM
                 </span>
@@ -52,10 +44,10 @@
         <!-- ACTIONS -->
         <div class="single-note-actions">
             <a
-                    th:href="@{/notes/edit/{id}(id=${note.id})}"
+                    th:href="@{/notes/edit/{id}(id=${note.id})}" href="edit-note.html"
                     class="btn-edit"
             >
-                ✏️ Edit Note
+                Edit Note
             </a>
 
             <form th:action="@{/notes/delete/{id}(id=${note.id})}" method="post">
@@ -64,7 +56,7 @@
                         class="btn-delete"
                         onclick="return confirm('Are you sure you want to delete this note?');"
                 >
-                    🗑️ Delete Note
+                    Delete Note
                 </button>
             </form>
         </div>
