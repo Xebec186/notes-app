@@ -24,7 +24,7 @@ public class NoteController {
     }
 
     @GetMapping("/notes")
-    public String showNotes(Model model) {
+    public String showNotesPage(Model model) {
         Long userId = 1L;
         List<NoteDto> notes = noteService.getAllNotesByUserId(userId);
         model.addAttribute("notes", notes);
@@ -32,13 +32,13 @@ public class NoteController {
     }
 
     @GetMapping("/notes/{id}")
-    public String showNote(@PathVariable Long id, Model model) {
+    public String showNotePage(@PathVariable Long id, Model model) {
         NoteDto noteDto = noteService.getNoteById(id);
         model.addAttribute("note", noteDto);
         return "note";
     }
 
-    @GetMapping("/add-note")
+    @GetMapping("/notes/add")
     public String showAddNotePage(Model model) {
         model.addAttribute("note", new NoteDto());
         return "add-note";
@@ -49,5 +49,18 @@ public class NoteController {
         Long userId = 1L;
         noteService.addNote(noteDto, 1L);
         return "redirect:/notes";
+    }
+
+    @GetMapping("/notes/edit/{id}")
+    public String showEditNotePage(@PathVariable Long id, Model model) {
+        NoteDto noteDto = noteService.getNoteById(id);
+        model.addAttribute("note", noteDto);
+        return "edit-note";
+    }
+
+    @PostMapping("/notes/edit/{id}")
+    public String editNote(@PathVariable Long id, @ModelAttribute NoteDto noteDto) {
+        noteService.updateNote(id, noteDto);
+        return "redirect:/notes/" + id;
     }
 }

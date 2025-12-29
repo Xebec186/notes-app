@@ -27,7 +27,7 @@
             <p th:text="${notes.size()} + ' notes'">3 notes</p>
         </div>
 
-        <a th:href="@{/add-note}" href="add-note.html" class="btn-primary">
+        <a th:href="@{/notes/add}" href="add-note.html" class="btn-primary">
             + Add New Note
         </a>
     </div>
@@ -52,7 +52,7 @@
                     </span>
 
                     <div class="actions">
-                        <a th:href="@{/notes/edit/{id}(id=${note.id})}" class="edit">
+                        <a th:href="@{/note/edit/{id}(id=${note.id})}" class="edit">
                             Edit
                         </a>
                         <a th:href="@{/notes/delete/{id}(id=${note.id})}"
