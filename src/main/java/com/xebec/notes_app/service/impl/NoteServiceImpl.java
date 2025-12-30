@@ -9,6 +9,7 @@ import com.xebec.notes_app.repository.UserRepository;
 import com.xebec.notes_app.service.NoteService;
 import lombok.AllArgsConstructor;
 import org.modelmapper.ModelMapper;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -36,6 +37,14 @@ public class NoteServiceImpl implements NoteService {
         Note note = noteRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Note does not exist with id: " + id));
         return modelMapper.map(note, NoteDto.class);
+    }
+
+    @Override
+    public List<NoteDto> getNotesForUser(String username) {
+        User user = userRepository.findByUsername(username)
+                .orElseThrow(() -> new UsernameNotFoundException("User does not exist with username: " + username));
+
+        return getAllNotesByUserId(user.getId());
     }
 
     public List<NoteDto> getAllNotesByUserId(Long userId) {

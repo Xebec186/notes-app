@@ -25,9 +25,8 @@ public class NoteController {
     }
 
     @GetMapping("/notes")
-    public String showNotesPage(Model model) {
-        Long userId = 1L;
-        List<NoteDto> notes = noteService.getAllNotesByUserId(userId);
+    public String showNotesPage(@AuthenticationPrincipal(expression = "username") String username, Model model) {
+        List<NoteDto> notes = noteService.getNotesForUser(username);
         model.addAttribute("notes", notes);
         return "notes";
     }

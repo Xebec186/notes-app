@@ -9,6 +9,8 @@ public interface NoteService {
 
     public NoteDto getNoteById(Long id);
 
+    public List<NoteDto> getNotesForUser(String username);
+
     public List<NoteDto> getAllNotesByUserId(Long userId);
 
     public NoteDto updateNote(Long id, NoteDto noteDto);
