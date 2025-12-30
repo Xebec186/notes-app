@@ -11,6 +11,7 @@ import lombok.AllArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -22,6 +23,8 @@ public class NoteServiceImpl implements NoteService {
     private UserRepository userRepository;
     private ModelMapper modelMapper;
 
+    @Transactional
+    @Override
     public NoteDto addNote(NoteDto noteDto, Long userId) {
         User user = userRepository.findById(userId)
                 .orElseThrow(() -> new ResourceNotFoundException("User does not exist with id: " + userId));
@@ -33,12 +36,15 @@ public class NoteServiceImpl implements NoteService {
         return modelMapper.map(addedNote, NoteDto.class);
     }
 
+    @Transactional(readOnly = true)
+    @Override
     public NoteDto getNoteById(Long id) {
         Note note = noteRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Note does not exist with id: " + id));
         return modelMapper.map(note, NoteDto.class);
     }
 
+    @Transactional(readOnly = true)
     @Override
     public List<NoteDto> getNotesForUser(String username) {
         User user = userRepository.findByUsername(username)
@@ -47,6 +53,8 @@ public class NoteServiceImpl implements NoteService {
         return getAllNotesByUserId(user.getId());
     }
 
+    @Transactional(readOnly = true)
+    @Override
     public List<NoteDto> getAllNotesByUserId(Long userId) {
         User user = userRepository.findById(userId)
                 .orElseThrow(() -> new ResourceNotFoundException("User does not exist with id: " + userId));
@@ -57,6 +65,8 @@ public class NoteServiceImpl implements NoteService {
                 .toList();
     }
 
+    @Transactional
+    @Override
     public NoteDto updateNote(Long id, NoteDto noteDto) {
         Note note = noteRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Note does not exist with id: " + id));
@@ -68,6 +78,8 @@ public class NoteServiceImpl implements NoteService {
         return modelMapper.map(updatedNote, NoteDto.class);
     }
 
+    @Transactional
+    @Override
     public String deleteNote(Long id) {
         Note note = noteRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Note does not exist with id: " + id));
