@@ -25,9 +25,9 @@ public class NoteServiceImpl implements NoteService {
 
     @Transactional
     @Override
-    public NoteDto addNote(NoteDto noteDto, Long userId) {
-        User user = userRepository.findById(userId)
-                .orElseThrow(() -> new ResourceNotFoundException("User does not exist with id: " + userId));
+    public NoteDto addNote(NoteDto noteDto, String username) {
+        User user = userRepository.findByUsername(username)
+                .orElseThrow(() -> new UsernameNotFoundException("User does not exist with username: " + username));
 
         Note note = modelMapper.map(noteDto, Note.class);
         note.setUser(user);

@@ -45,9 +45,9 @@ public class NoteController {
     }
 
     @PostMapping("/notes/add")
-    public String addNote(@ModelAttribute NoteDto noteDto) {
-        Long userId = 1L;
-        noteService.addNote(noteDto, 1L);
+    public String addNote(@AuthenticationPrincipal(expression = "username") String username,
+                          @ModelAttribute NoteDto noteDto) {
+        noteService.addNote(noteDto, username);
         return "redirect:/notes";
     }
 
