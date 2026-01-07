@@ -3,6 +3,7 @@ package com.xebec.notes_app.controller.api;
 import com.xebec.notes_app.dto.NoteDto;
 import com.xebec.notes_app.service.NoteService;
 import lombok.AllArgsConstructor;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -13,10 +14,9 @@ import java.util.List;
 public class NoteApiController {
 
     private NoteService noteService;
-    private static final String username = "Test user";
 
     @PostMapping
-    public NoteDto addNote(@RequestBody NoteDto noteDto) {
+    public NoteDto addNote(@RequestBody NoteDto noteDto, @AuthenticationPrincipal(expression = "username") String username) {
         return noteService.addNote(noteDto, username);
     }
 
@@ -26,7 +26,7 @@ public class NoteApiController {
     }
 
     @GetMapping
-    public List<NoteDto> getAllNotesForUser() {
+    public List<NoteDto> getAllNotesForUser(@AuthenticationPrincipal(expression = "username") String username) {
         return noteService.getNotesForUser(username);
     }
 

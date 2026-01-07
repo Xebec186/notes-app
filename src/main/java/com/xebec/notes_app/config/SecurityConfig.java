@@ -15,6 +15,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 @Configuration
 @EnableWebSecurity
@@ -22,6 +23,7 @@ import org.springframework.security.web.SecurityFilterChain;
 public class SecurityConfig {
 
     private UserDetailsService userDetailsService;
+    private JwtFilter jwtFilter;
 
     @Bean
     @Order(1)
@@ -29,9 +31,11 @@ public class SecurityConfig {
         return http
                 .securityMatcher("/api/**")
                 .authorizeHttpRequests(requests -> requests
-                        .requestMatchers("/api/**")
+                        .requestMatchers("/api/auth/**")
                         .permitAll()
+                        .anyRequest().authenticated()
                 )
+                .addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class)
                 .formLogin(AbstractHttpConfigurer::disable)
                 .csrf(AbstractHttpConfigurer::disable)
                 .sessionManagement(session -> session
