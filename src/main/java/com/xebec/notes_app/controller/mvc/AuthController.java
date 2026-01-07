@@ -1,4 +1,4 @@
-package com.xebec.notes_app.controller;
+package com.xebec.notes_app.controller.mvc;
 
 import com.xebec.notes_app.dto.RegisterDto;
 import com.xebec.notes_app.exception.UsernameAlreadyExistsException;
@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
 @AllArgsConstructor
-public class UserController {
+public class AuthController {
 
     private UserService userService;
 
