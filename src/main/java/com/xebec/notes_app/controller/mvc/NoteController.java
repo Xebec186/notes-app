@@ -1,4 +1,4 @@
-package com.xebec.notes_app.controller;
+package com.xebec.notes_app.controller.mvc;
 
 import com.xebec.notes_app.dto.NoteDto;
 import com.xebec.notes_app.service.NoteService;
