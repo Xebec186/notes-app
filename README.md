@@ -47,4 +47,5 @@ Users can register, log in, and manage their own notes securely.
 - User profile management
 - Password reset & email verification
 - ~~REST API version for frontend frameworks (React)~~
+- REST API Documentation
 - Improved UI responsiveness (mobile support)
