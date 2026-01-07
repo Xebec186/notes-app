@@ -4,7 +4,6 @@ import com.xebec.notes_app.dto.RegisterDto;
 import com.xebec.notes_app.exception.UsernameAlreadyExistsException;
 import com.xebec.notes_app.service.UserService;
 import lombok.AllArgsConstructor;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
